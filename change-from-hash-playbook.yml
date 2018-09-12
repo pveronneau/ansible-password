@@ -1,0 +1,5 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: Change user password from a hash
+    user: name=user password=<HASH> update_password=always

@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  vars_prompt:
+  - name: user_name
+    prompt: Enter the user name
+    private: no
+  - name: pass
+    prompt: Enter the password
+  - name: group_name
+    prompt: Enter primary group name
+    private: no
+  - name: comment
+    prompt: Enter user comment including full name and group [Chip Jones - Accounting]
+    private: no
+  
+  tasks:
+  - name: Add {{ user_name }}
+    user: name={{ user_name }} password={{ pass|password_hash('md5') }} update_password=always shell=/bin/bash group={{ group_name }} comment={{ comment }}
