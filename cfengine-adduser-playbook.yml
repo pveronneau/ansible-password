@@ -16,4 +16,4 @@
   
   tasks:
   - name: Add {{ user_name }}
-    user: name={{ user_name }} password={{ pass|password_hash('md5') }} update_password=always shell=/bin/bash group={{ group_name }} comment={{ comment }}
+    user: name={{ user_name }} password={{ pass|password_hash('sha512') }} update_password=always shell=/bin/bash group={{ group_name }} comment={{ comment }}
